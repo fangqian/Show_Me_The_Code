@@ -114,3 +114,22 @@ if __name__ == "__main__":
     print(dicts)
     Result = pd.DataFrame(dicts, columns = ["start","end","distance"])
     Result.to_csv(result_name,index = False, header=None,mode = "a", sep="\t")
+
+
+#     import networkx as nx
+
+# G = nx.Graph()
+
+# G.add_weighted_edges_from([(1,2,4),(2,3,2),(1,3,6),(3,4,3),(2,4,1)])
+
+# p = nx.shortest_path(G,source=1,target=4)
+# # print(dir(p))
+# x = path=nx.all_pairs_shortest_path(G) 
+# # print(dir(x))
+# q = nx.shortest_path_length(G,source=1,target=4)
+# y = nx.shortest_path_length(G,source=1,target=3)
+
+# print(nx.dijkstra_path_length(G,1,4))
+
+# print(x[1][2])
+# print(p,x[1][4],q,y)
