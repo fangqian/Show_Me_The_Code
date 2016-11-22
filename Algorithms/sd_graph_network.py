@@ -1,10 +1,16 @@
+# -*- coding:utf-8 -*-
+'''
+Description : Check the data input 
+require     : windows Anaconda-2.3.0
+author      : qiangu_fang@163.com
+usage  $ python sd_graph_network.py -f filename -m methon -s start_point -e end_point 
+'''
+import os
 import networkx as nx
 import pandas as pd
 from pandas import Series
 from optparse import OptionParser
 
-# para_list = [[1,2,16],[1,3,13],[3,2,4],[2,4,12],[3,5,14],
-#              [4,3,9],[5,4,7],[5,6,4],[4,6,20]]
 def data_set(fname):
 	df = pd.read_csv(fname,names=["Edge","Start_point","End_point","Capacity"],skiprows=[0],sep="\t")
 	data = (pd.DataFrame(df)).set_index("Edge")
@@ -12,21 +18,48 @@ def data_set(fname):
 
 def max_flow(inFile,source,end):
     para_list = data_set(inFile)
-    # print(para_list)
 
     G = nx.DiGraph()
 
     for i in para_list:
-    	print(i)
+    	# print(i)
         G.add_edge(str(i[0]),str(i[1]), capacity=i[2])
 
     flow_value, flow_dict = nx.maximum_flow(G, source, end)
-    print(flow_value,flow_dict)
+    
+    result=[]
+    for x in flow_dict.keys():
+    	if flow_dict[x]:
+    	    for k,v in flow_dict[x].items():
+    	        result.append([x,k,v])
+    	else:continue
+    return flow_value,result
 
+def min_span_tree(inFile):
+    para_list = data_set(inFile)
+
+    G = nx.Graph()
+
+    for i in para_list:
+        G.add_edge(str(i[0]),str(i[1]),weight=i[2])
+        T=nx.minimum_spanning_tree(G)
+        result=[]
+        flow_value=0
+
+    for x in T.edges():
+        result.append(list(x)+list(str(T.get_edge_data(x[0],x[1])["weight"])))
+        flow_value+=T.get_edge_data(x[0],x[1])["weight"]
+
+    return flow_value,result
+    
 def main(inFile,method,source,end):
-	if method == "max_flow":
-		max_flow(inFile,source,end)
-	else:print("error")
+    if method == "max_flow":
+        value, dicts = max_flow(inFile,source,end)
+
+    elif method == "min_span_tree":
+        value,dicts = min_span_tree(inFile)
+
+    return value,dicts
 
 
 if __name__ == "__main__":
@@ -67,4 +100,17 @@ if __name__ == "__main__":
     m = options.method
     s = options.source
     e = options.end
-    main(inFile,m,s,e)
+    # n = options.node
+
+    value, dicts = main(inFile,m,s,e)
+    full_name = os.path.realpath(inFile)
+    pos = full_name.find(".txt")
+    result_name = full_name[:pos] + str(m)+"_result.txt"
+
+    f = open(result_name, "w")
+    f.write(str(value))
+    f.write("\n")
+    f.close()
+    print(dicts)
+    Result = pd.DataFrame(dicts, columns = ["start","end","distance"])
+    Result.to_csv(result_name,index = False, header=None,mode = "a", sep="\t")
