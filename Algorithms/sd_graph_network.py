@@ -45,7 +45,10 @@ def max_flow(inFile,source,end):
     	    for k,v in flow_dict[x].items():
     	        result.append([x,k,v])
     	else:continue
-    return flow_value,result
+
+    Result = pd.DataFrame(result, columns = ["start","end","distance"])
+
+    return flow_value,Result
 
 def min_span_tree(inFile):
     para_list = data_set(inFile)
@@ -63,12 +66,17 @@ def min_span_tree(inFile):
         result.append(list(x)+[(str(T.get_edge_data(x[0],x[1])["weight"]))])
         flow_value+=T.get_edge_data(x[0],x[1])["weight"]
 
-    return flow_value,result
+    Result = pd.DataFrame(result, columns = ["start","end","distance"])
 
-def shortest_path(inFile, source, end):
+    return flow_value,Result
+
+def shortest_path(inFile, source, end, direction):
 
     para_list = data_set(inFile)
-    G = nx.Graph()
+    if direction:
+        G = nx.DiGraph()
+    else:
+        G = nx.Graph()
 
     edges = []
     for i in para_list:
@@ -86,11 +94,41 @@ def shortest_path(inFile, source, end):
     result = []
 
     for x in range(len(path)-1):
-    	result.append([path[x],path[x+1]]+list(str(nx.dijkstra_path_length(G,path[x],path[x+1]))))
-    
-    return path_length,result
+    	result.append([path[x],path[x+1]]+[str(nx.dijkstra_path_length(G,path[x],path[x+1]))])
 
-def main(inFile,method,source,end):
+    Result = pd.DataFrame(result, columns = ["start","end","distance"])
+    
+    return path_length,Result
+
+def max_flow_min_cost(inFile,source,end):
+    df = pd.read_csv(inFile,names=["Edge","Start_point","End_point","Capacity","Cost"],skiprows=[0],sep="\t")
+    data = (pd.DataFrame(df)).set_index("Edge")
+
+    edges = []
+    for i in data.values:
+        edges += [(str(i[0]),str(i[1]),{"capacity":i[2],"weight":i[3]})]
+
+    G = nx.DiGraph()
+    G.add_edges_from(edges)
+    mincostFlow = nx.max_flow_min_cost(G, "1", "4")
+    mincost = nx.cost_of_flow(G, mincostFlow)
+    
+    result = []
+    for x in mincostFlow.keys():
+    	if mincostFlow[x]:
+    	    for k,v in mincostFlow[x].items():
+    	        result.append([x,k,v,G.get_edge_data(x,k)["weight"]])
+    	else:continue
+
+    maxFlow = nx.maximum_flow(G, "1", "4")[0]
+
+    Result = pd.DataFrame(result, columns = ["start","end","capacity","cost"])
+    return (mincost,maxFlow),Result
+
+
+    
+
+def main(inFile,method,source,end,direction):
     if method == "max_flow":
         value, dicts = max_flow(inFile,source,end)
 
@@ -98,7 +136,11 @@ def main(inFile,method,source,end):
         value,dicts = min_span_tree(inFile)
 
     elif method == "shortest_path":
-    	value,dicts = shortest_path(inFile,source,end)
+    	value,dicts = shortest_path(inFile,source,end,direction)
+
+    elif method == "max_flow_min_cost":
+    	# max_flow_min_cost(inFile,source,end)
+    	value, dicts = max_flow_min_cost(inFile,source,end)
 
     else:graph_network_logger.info("Method not find")
 
@@ -130,6 +172,12 @@ if __name__ == "__main__":
                          default=None,
                          type="str")
 
+    optparser.add_option('-d', '--direction',
+                         dest='direction',
+                         help='direction/no_direction graph',
+                         default=None,
+                         type="str")
+
     (options, args) = optparser.parse_args()
     
     if options.input is None:
@@ -144,18 +192,21 @@ if __name__ == "__main__":
     m = options.method
     s = options.source
     e = options.end
+    d = options.direction
     
     graph_network_logger.info("Computing...")
-    value, dicts = main(inFile,m,s,e)
+    value, Result = main(inFile,m,s,e,d)
     full_name = os.path.realpath(inFile)
     pos = full_name.find(".txt")
     result_name = full_name[:pos] + "_"+str(m)+"_result.txt"
 
     f = open(result_name, "w")
-    f.write(str(value))
-    f.write("\n")
+    if m == "max_flow_min_cost":
+    	f.write(str(value[0])+"\t"+str(value[1])+"\n")
+    else:
+        f.write(str(value)+"\n")
     f.close()
 
     graph_network_logger.info("Saving data to file")
-    Result = pd.DataFrame(dicts, columns = ["start","end","distance"])
+    
     Result.to_csv(result_name,index = False, header=None,mode = "a", sep="\t")
