@@ -31,10 +31,9 @@ def line_search(f, grad, init, direction_algo, steplength_algo, \
 # 输入 (目标函数，梯度函数，x)
 # 输出在 x 的负梯度向量
 def grad_descent(f, grad, x, params=None):
-    print(x)
-    #print(grad(x),np.sqrt(grad(x).dot(grad(x))))
+    print(grad(x),np.sqrt(grad(x).dot(grad(x))))
     # print(grad(x)[0]/np.sqrt(grad(x).dot(x)),grad(x)[1]/np.sqrt(grad(x).dot(x)))
-    return -grad(x)/np.linalg.norm(grad(x))
+    return -grad(x)
 	
 # 牛顿方向算法
 # 输入 (目标函数，梯度函数，x，(海塞矩阵函数,))
@@ -64,70 +63,22 @@ def backtrack(f,grad,x,p, params):
         a = a*rho
     return a
 
-def hess3(x):
-    return np.array([[2,-1],[-1,2]])
-
-def hess4(x):
-    return np.array([[2,0],[0,50]])
 # 最佳步长法：
 # 梯度 × 梯度的转置 × 梯度的模
 #————————————————————————————————
 # 梯度 × f(x)的海瑟矩阵 × 梯度的转置
-def best_track(grad,x):
-    return (grad(x).dot(np.mat(grad(x)).T).dot(np.linalg.norm(grad(x))))/(grad(x).dot(hess4(x)).dot(np.mat(grad(x)).T))
-
-
+def best_track(
 def f3(x):
     return (x[0])**2 + (x[1])**2 - x[0]*x[1] - 10*x[0] - 4*x[1] + 60
 
 def grad3(x):
     return np.array([2*x[0]-x[1]-10, 2*x[1]-x[0]-4])
-
-def hess3(x):
-    return np.array([[2,0],[0,50]])
-
-
 	
-# result1 = line_search(f3, grad3, np.array([0.0,0.0]), grad_descent, backtrack,None,\
-#                       (1,0.5,0.0001),epsilon=0.1)
+result1 = line_search(f3, grad3, np.array([0.0,0.0]), grad_descent, backtrack,None,\
+                      (1,0.5,0.0001),epsilon=0.1)
 
-def line_search2(f, grad, init, direction_algo, steplength_algo, \
-                direction_params=None, steplength_params=None, epsilon=0, iterations=5):
-    sequence = [init]         # 起始点
-    x = init
-    print(type(x),x)
-    prev_val = float('inf')    # 正无穷
-    counter = 0
-    while abs(f(x)-prev_val)>epsilon and counter<iterations:
-        p = direction_algo(f,grad,x,direction_params)
-        a = steplength_algo(grad,x)
-        # print(p,a)
-        # print(type(a*p))
-        prev_val = f(x)
-        counter += 1
-        x=x+float(a)*p
-        # print(a)
+# print(result1)
+# print(f3(result1[-1]))
 
-    
-        # x = float(a)*p
-        
-        sequence.append(x)    # 遍历的点坐标
-        print("\n")
-        print(f(x))
-    for i in sequence:
-        print(i)
-    return(sequence)
-#result2 = line_search2(f3, grad3, np.array([0.0,0.0]), grad_descent, best_track,direction_params=None, steplength_params=None,epsilon=0.1)
-
-
-def f4(x):
-    return (x[0])**2 + 25*(x[1])**2
-
-def grad4(x):
-    return np.array([2*x[0], 50*x[1]])
-
-
-
-result2 = line_search2(f4, grad4, np.array([2.0,2.0]), grad_descent, best_track,direction_params=None, steplength_params=None,epsilon=0.1)
-
+						   
 
