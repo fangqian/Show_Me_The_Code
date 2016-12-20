@@ -198,7 +198,7 @@ if __name__ == "__main__":
     value, Result = main(inFile,m,s,e,d)
     full_name = os.path.realpath(inFile)
     pos = full_name.find(".txt")
-    result_name = full_name[:pos] + "_"+str(m)+"_result.txt"
+    result_name = full_name[:pos] +"_result.txt"
 
     f = open(result_name, "w")
     if m == "max_flow_min_cost":

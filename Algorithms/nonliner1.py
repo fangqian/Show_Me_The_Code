@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import numpy as np
-import numpy
+from sympy import *
+from optparse import OptionParser
 import matplotlib.pyplot as plt
 from numba import jit
 
@@ -42,7 +43,7 @@ def grad_descent(f, grad, x, params=None):
 def newton_method(f, grad, x, params):
     hess = params[0](x)
     if is_pos_def(hess):
-        return -(numpy.linalg.inv(hess)).dot(grad(x))
+        return -(np.linalg.inv(hess)).dot(grad(x))
     else:
         return -grad(x)
 		
@@ -128,6 +129,66 @@ def grad4(x):
 
 
 
-result2 = line_search2(f4, grad4, np.array([2.0,2.0]), grad_descent, best_track,direction_params=None, steplength_params=None,epsilon=0.1)
+#result3 = line_search2(f4, grad4, np.array([2.0,2.0]), grad_descent, best_track,direction_params=None, steplength_params=None,epsilon=0.1)
 
 
+
+# def main():
+
+
+if __name__ == "__main__":
+    optparser = OptionParser()
+    optparser.add_option('-f', '--function',
+                         dest='func',
+                         help='function name that want to be solved',
+                         type='string',
+                         default=None)
+
+    optparser.add_option('-e', '--epsilon',
+                         dest='epsilon',
+                         help='epsilon  allowed',
+                         default=0.01,
+                         type='float')
+    optparser.add_option('-n', '--number',
+                         dest='number',
+                         help='numbers of independent variable',
+                         default=2,
+                         type='int')
+    optparser.add_option('-s','--start_point',
+                         dest='start_point',
+                         help='start point coordinates',
+                         type="string")
+    
+    (options, args) = optparser.parse_args()
+    print(options,args)
+    
+    f = options.func
+    print(type(f),f)
+
+    e = options.epsilon
+    print(type(e),e)
+
+    n = options.number
+    print(type(n),n)
+
+    s = options.start_point
+    print(type(s),eval(s))
+ 
+
+    # (args) = symbols(str(args[0],args[1]))
+    x,y = symbols("x y")
+    a = eval(f)
+    print(diff(a,x))
+    print(type(a),a)
+
+    def fun(a):
+        return a
+
+    def grad(a):
+        return np.array([diff(a,x), diff(a,y)])
+    
+    def hess(a):
+        return np.array([[diff(a,x,x),diff(a,x,y)], [diff(a,y,x),diff(a,y,y)]])
+
+    print(fun(a),grad(a),hess(a))
+    # result = line_search2(fun(a), grad(a), np.array([0.0,0.0]), grad_descent, best_track,direction_params=None, steplength_params=None,epsilon=0.1)
