@@ -178,17 +178,32 @@ if __name__ == "__main__":
     # (args) = symbols(str(args[0],args[1]))
     x,y = symbols("x y")
     a = eval(f)
+    print(a.subs({x:1,y:1}))
+    b=diff(a,x)
+    print(b.subs({x:1,y:2}))
     print(diff(a,x))
     print(type(a),a)
 
-    def fun(a):
-        return a
+    def fun(a,data):
+        # x,y = symbols("x y")
+        # x,y = data[0],data[1]
+        print(x,y)
+        print(type(a),a)
+        print(dir(a))
+        #print(help(a.subs))
+        print(a.subs({x:1,y:2}))
+        print(a.evalf(subs={x:1,y:2}))
+        #re = a._matches_commutative(a){x_: x, y_: y}
+        #print(type(re),re)
+        return a.subs({x:data[0],y:data[1]})
 
-    def grad(a):
-        return np.array([diff(a,x), diff(a,y)])
-    
-    def hess(a):
+    def grad(a,data):
+        return np.array([diff(a,x).subs({x:data[0],y:data[1]}), diff(a,y).subs({x:data[0],y:data[1]})])
+    #(a+b*c)._matches_commutative(x+y*z, repl_dict={a: x}, evaluate=True) {a_: x, b_: y, c_: z}
+    def hess(a,data):
         return np.array([[diff(a,x,x),diff(a,x,y)], [diff(a,y,x),diff(a,y,y)]])
 
-    print(fun(a),grad(a),hess(a))
+    point = np.array([0.0,0.0])
+
+    print(fun(a,point),grad(a,point),hess(a,point))
     # result = line_search2(fun(a), grad(a), np.array([0.0,0.0]), grad_descent, best_track,direction_params=None, steplength_params=None,epsilon=0.1)
