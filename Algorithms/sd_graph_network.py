@@ -105,12 +105,13 @@ def max_flow_min_cost(inFile,source,end):
     data = (pd.DataFrame(df)).set_index("Edge")
 
     edges = []
+    print(data.values)
     for i in data.values:
         edges += [(str(i[0]),str(i[1]),{"capacity":i[2],"weight":i[3]})]
 
     G = nx.DiGraph()
     G.add_edges_from(edges)
-    mincostFlow = nx.max_flow_min_cost(G, "1", "4")
+    mincostFlow = nx.max_flow_min_cost(G, source, end)
     mincost = nx.cost_of_flow(G, mincostFlow)
     
     result = []
@@ -120,7 +121,7 @@ def max_flow_min_cost(inFile,source,end):
     	        result.append([x,k,v,G.get_edge_data(x,k)["weight"]])
     	else:continue
 
-    maxFlow = nx.maximum_flow(G, "1", "4")[0]
+    maxFlow = nx.maximum_flow(G, source, end)[0]
 
     Result = pd.DataFrame(result, columns = ["start","end","capacity","cost"])
     return (mincost,maxFlow),Result
@@ -196,7 +197,7 @@ if __name__ == "__main__":
     
     graph_network_logger.info("Computing...")
     value, Result = main(inFile,m,s,e,d)
-    full_name = os.path.realpath(inFile)
+    full_name = os.path.getcwd()
     pos = full_name.find(".txt")
     result_name = full_name[:pos] +"_result.txt"
 
