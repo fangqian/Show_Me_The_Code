@@ -217,20 +217,19 @@ if __name__ == "__main__":
     summary,Pn = main(method, c, n, u, d, e, m, cn)
     
     queue_logger.info("Computing...")
-    full_name = os.getcwd()
-    full_name = os.path.dirname(full_name)+os.path.sep+"pythonFiles"+os.path.sep
-
+   
+    full_name = os.path.dirname(os.path.dirname(os.path.realpath( sys.argv[0])))
 
     queue_logger.info("Computing done, save data into file")
-    result_name = full_name +"sd_queue_result.txt"
+    result_name = full_name +os.path.sep+"pythonFiles"+os.path.sep+"sd_queue_result.txt"
 
-    f = open(result_name, "w")
+    f = open(result_name, "w+")
     for x in summary.keys():
         f.write(dicts[x]+"\t"+str(summary[x])+"\n")
     f.close()
 
     if Pn != None:
-        f = open(result_name, "aw")
+        f = open(result_name, "a+")
         f.write("******"+"\n")
         f.close()
         Pn = pd.DataFrame(Pn)

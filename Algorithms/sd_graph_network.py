@@ -197,7 +197,7 @@ if __name__ == "__main__":
     
     graph_network_logger.info("Computing...")
     value, Result = main(inFile,m,s,e,d)
-    full_name = os.path.getcwd()
+    full_name = os.path.realpath(inFile)
     pos = full_name.find(".txt")
     result_name = full_name[:pos] +"_result.txt"
 
