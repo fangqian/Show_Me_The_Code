@@ -471,7 +471,7 @@ def s_Q_Normal(a, c, h, p, e, q, o, B1, w, x, y, average, standard_deviation):
 
         s = fsolve(f,x0=0, args=(h,best_order,B1,D,B,q))[0]
         i = math.sqrt(2*D/h*(a+B*(standard*norm.pdf((s-dl)/standard, loc=0, scale=1)+(dl-s)*(1-norm.cdf(s, loc = dl, scale= standard))))) - best_order
-        best_order = math.sqrt(2*D/h*(a+B*(standard*norm.pdf((s-dl)/standard, loc=0, scale=1)+(dl-s)*(1-norm.cdf(s, loc = dl, scale= standard)))))
+        best_order = math.sqrt(2*D/h*(a+B*(standard*norm.pdf((s-dl)/standard, loc=0, scale=1)+(dl-s)*(1-norm.cdf(s, loc = dl, scale= standard))) + B1*1-norm.cdf(s,loc=dl, scale=standard)))
 
     
     SS = s - dl
