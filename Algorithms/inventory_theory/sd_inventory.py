@@ -12,7 +12,9 @@ import logging
 import math
 from math import exp,factorial
 #import pandas as pd
-#from scipy.stats import norm
+from scipy.stats import norm
+from scipy.optimize import newton
+from scipy.optimize import fsolve
 from optparse import OptionParser
 
 # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -450,8 +452,39 @@ def s_Q_Exponential(a, c, h, p, e, q, o, B1, w, x, y, l):
     total_fee = order_cost + total_inventory_cost + shortage_cost
     print(B, D, dl, s, best_order, SS, ave_shortage, shortage_percent,order_cost, total_inventory_cost, shortage_cost, total_fee)
 
-s_Q_Exponential(500.0, 100000.0, 2000.0, 0.8, 1000, 0.2, 6000.0, 0, 0.001, 10.0, 365.0, 600.0)
+# s_Q_Exponential(500.0, 100000.0, 2000.0, 0.8, 1000, 0.2, 6000.0, 0, 0.001, 10.0, 365.0, 600.0)
 
+def s_Q_Normal(a, c, h, p, e, q, o, B1, w, x, y, average, standard_deviation):
+    B = p*e + q*o
+    D = average
+    dl = x*average/y
+    print(dl)
+    i = float("inf")
+    best_order = math.sqrt(2.0*D*a/h)
+
+    standard = standard_deviation*math.sqrt(x/y)
+
+    while w<i:
+        def f(s,h,best_order,B1,D,B,q):
+            return norm.cdf(s,loc=dl, scale=standard) - 1 + (h*best_order-B1*D*norm.pdf(s,loc=dl,scale=standard))/(q*h*best_order
+            	+B*D)
+
+        s = fsolve(f,x0=0, args=(h,best_order,B1,D,B,q))[0]
+        i = math.sqrt(2*D/h*(a+B*(standard*norm.pdf((s-dl)/standard, loc=0, scale=1)+(dl-s)*(1-norm.cdf(s, loc = dl, scale= standard))))) - best_order
+        best_order = math.sqrt(2*D/h*(a+B*(standard*norm.pdf((s-dl)/standard, loc=0, scale=1)+(dl-s)*(1-norm.cdf(s, loc = dl, scale= standard)))))
+
+    
+    SS = s - dl
+    ave_shortage = standard*norm.pdf((s-dl)/standard, loc=0, scale=1)+(dl-s)*(1-norm.cdf(s, loc = dl, scale= standard))
+    shortage_percent = 1-norm.cdf(s,loc=dl, scale=standard)
+
+    order_cost = a*D/best_order + c*D
+    total_inventory_cost = h*(best_order/2.0+s-dl+q*ave_shortage)
+    shortage_cost = (B*D*ave_shortage+shortage_percent*B1*D)/best_order
+    total_fee = order_cost + total_inventory_cost + shortage_cost
+    print(B, D, standard,dl, s, best_order, SS, ave_shortage, shortage_percent,order_cost, total_inventory_cost, shortage_cost, total_fee)
+
+s_Q_Normal(500.0, 100000.0, 2000.0, 0.8, 1000.0, 0.2, 6000.0, 0, 0.05, 10.0, 365.0, 600.0, 100.0)
 # if __name__ == "__main__":
 #     optparser = OptionParser()
 
