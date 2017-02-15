@@ -3,3 +3,34 @@
 2017-01-10 11:38:05,319 sd_queue.py[line:207] INFO Start,getting parameters
 2017-01-10 11:38:05,319 sd_queue.py[line:219] INFO Computing...
 2017-01-10 11:38:05,319 sd_queue.py[line:224] INFO Computing done, save data into file
+2017-02-15 16:42:22,750 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 16:42:37,719 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 16:43:59,956 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 16:44:15,310 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 16:44:15,310 sd_queue.py[line:223] INFO Computing...
+2017-02-15 16:44:15,310 sd_queue.py[line:227] INFO Computing done, save data into file
+2017-02-15 16:44:45,585 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 16:44:45,585 sd_queue.py[line:223] INFO Computing...
+2017-02-15 16:44:45,585 sd_queue.py[line:227] INFO Computing done, save data into file
+2017-02-15 16:50:55,307 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 16:50:55,307 sd_queue.py[line:223] INFO Computing...
+2017-02-15 16:50:55,307 sd_queue.py[line:227] INFO Computing done, save data into file
+2017-02-15 16:56:47,775 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 16:56:47,775 sd_queue.py[line:223] INFO Computing...
+2017-02-15 16:56:47,775 sd_queue.py[line:227] INFO Computing done, save data into file
+2017-02-15 17:00:04,643 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 17:00:04,644 sd_queue.py[line:223] INFO Computing...
+2017-02-15 17:00:04,644 sd_queue.py[line:227] INFO Computing done, save data into file
+2017-02-15 17:01:21,737 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 17:02:33,540 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 17:02:33,540 sd_queue.py[line:223] INFO Computing...
+2017-02-15 17:02:33,540 sd_queue.py[line:227] INFO Computing done, save data into file
+2017-02-15 17:03:48,781 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 17:03:48,781 sd_queue.py[line:223] INFO Computing...
+2017-02-15 17:03:48,781 sd_queue.py[line:227] INFO Computing done, save data into file
+2017-02-15 17:05:14,476 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 17:05:14,477 sd_queue.py[line:223] INFO Computing...
+2017-02-15 17:05:14,477 sd_queue.py[line:227] INFO Computing done, save data into file
+2017-02-15 17:06:27,480 sd_queue.py[line:211] INFO Start,getting parameters
+2017-02-15 17:06:27,480 sd_queue.py[line:223] INFO Computing...
+2017-02-15 17:06:27,480 sd_queue.py[line:227] INFO Computing done, save data into file

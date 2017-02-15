@@ -10,6 +10,7 @@ import sys
 import logging
 import math
 import pandas as pd
+from decimal import *
 from optparse import OptionParser
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -49,7 +50,7 @@ def M_M_C(c, n, u, d, e):
         else:
             pn.append((n/u)**i/(math.factorial(c)*(c**(i-c)))* p)
 
-    return ({"n":n,"u":u,"p":p,"l1":l1,"l2":l2,"w1":w1,"w2":w2,"p1":p1,"cost":cost}, pn)
+    return (["n","u","p","l1","l2","w1","w2","p1","cost"],[n, u, p, l1, l2, w1, w2, p1,cost],pn)
 
 def M_G_1(n, u, d, e, m):
     p = 1.0 - n/u
@@ -63,7 +64,7 @@ def M_G_1(n, u, d, e, m):
 
     pn =None
 
-    return ({"n":n,"u":u,"m":m,"p":p,"l1":l1,"l2":l2,"w1":w1,"w2":w2,"p1":p1,"cost":cost},pn)  
+    return (["n","u","m","p","l1","l2","w1","w2","p1","cost"],[n, u, m, p, l1, l2, w1, w2, p1, cost],pn)  
 
 def M_G_C_C(c, n, u):
     a = sum([(n/u)**j/math.factorial(j) for j in range(c+1)])
@@ -74,7 +75,7 @@ def M_G_C_C(c, n, u):
     p = 1.0/a
     l1 = (n/u)/(1.0-(n/u)**c/math.factorial(c)/a)
 
-    return ({"n":n,"u":u,"p":p,"l1":l1}, pn)
+    return (["n","u","p","l1"], [n, u, p, l1], pn)
 
 def M_M_c_m(c, cn, n, u, d, e): 
    
@@ -95,18 +96,20 @@ def M_M_c_m(c, cn, n, u, d, e):
     l2 = sum([i * Pn(cn, c, i, n, u,p) for i in range(1, cn+1)])
     l1 = sum([(i-c) * Pn(cn, c, i, n, u,p) for i in range(c+1, cn+1)])
 
-    l = n*(cn - l1)
-
+    l = n*(cn - l2)
     w1 = l1/l
-    w2 = l2/l
+    w2 = w1 + 1.0/u
 
     cost = c*d + l2*e
-
-    p1 = sum([Pn(cn, c, i, n, u,p) for i in range(c,cn+1)])
+    
+    if cn+1-c <= c: 
+        p1 = sum([Pn(cn, c, i, n, u,p) for i in range(c,cn+1)])
+    else:
+        p1 = 1.0 - sum([Pn(cn, c, i, n, u,p) for i in range(c)])
 
     pn = [Pn(cn, c, i, n, u,p) for i in range(0, cn+1)]
 
-    return ({"n":n,"u":u,"p":p, "l1":l1, "l2":l2, "w1":w1, "w2":w2, "cost":cost, "p1":p1}, pn)
+    return (["n","u","p", "l1", "l2", "w1", "w2", "p1", "cost"], [n, u, p, l1, l2, w1, w2, p1, cost], pn)
 
 def M_M_s(cn, c, n, u):
     x = n/(c*u)
@@ -128,27 +131,27 @@ def M_M_s(cn, c, n, u):
     
     pn = [Pn(c, x, i, p) for i in range(0, cn+1)]
 
-    return ({"n":n,"u":u,"p":p, "l1":l1, "l2":l2, "w1":w1, "w2":w2},pn)
+    return (["n","u","p", "l1", "l2", "w1", "w2"], [n, u, p, l1, l2, w1, w2],pn)
 
 def main(method, c, n, u, d, e, m, cn):
     if method == "M_M_C":
-        summary, Pn = M_M_C(c, n, u, d, e)
+        name, value, Pn = M_M_C(c, n, u, d, e)
 
     elif method == "M_G_1":
-        summary, Pn = M_G_1(n, u, d, e, m)
+        name, value, Pn = M_G_1(n, u, d, e, m)
 
     elif method == "M_G_C_C":
-        summary, Pn = M_G_C_C(c, n, u)
+        name, value, Pn = M_G_C_C(c, n, u)
 
     elif method == "M_M_c_m":
-        summary, Pn = M_M_c_m(c, cn, n, u, d, e)
+        name, value, Pn = M_M_c_m(c, cn, n, u, d, e)
 
     elif method == "M_M_s":
-        summary, Pn = M_M_s(cn, c, n, u)
+        name, value, Pn = M_M_s(cn, c, n, u)
 
     else:queue_logger.info("Method not find")
 
-    return summary,Pn
+    return name, value, Pn
 
 if __name__ == "__main__":
     optparser = OptionParser()
@@ -214,7 +217,7 @@ if __name__ == "__main__":
     m = options.mean
     cn = options.cu_number
 
-    summary,Pn = main(method, c, n, u, d, e, m, cn)
+    name, value,Pn = main(method, c, n, u, d, e, m, cn)
     
     queue_logger.info("Computing...")
    
@@ -224,8 +227,8 @@ if __name__ == "__main__":
     result_name = full_name +os.path.sep+"pythonFiles"+os.path.sep+"sd_queue_result.txt"
 
     f = open(result_name, "w+")
-    for x in summary.keys():
-        f.write(dicts[x]+"\t"+str(summary[x])+"\n")
+    for i in xrange(len(name)):
+        f.write(dicts[name[i]]+"\t"+str(float("%0.4f"%value[i]))+"\n")
     f.close()
 
     if Pn != None:
@@ -233,4 +236,4 @@ if __name__ == "__main__":
         f.write("******"+"\n")
         f.close()
         Pn = pd.DataFrame(Pn)
-        Pn.to_csv(result_name,index = True, header=None,float_format = "%.6f",mode = "a", sep="\t")
+        Pn.to_csv(result_name,index = True, header=None,float_format = "%.4f",mode = "a", sep="\t")
