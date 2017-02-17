@@ -198,3 +198,142 @@
 2017-02-15 16:22:48,452 sd_inventory.py[line:616] INFO Start,getting parameters
 2017-02-15 16:22:48,477 sd_inventory.py[line:645] INFO Computing...
 2017-02-15 16:22:48,477 sd_inventory.py[line:649] INFO Computing done, save data into file
+2017-02-16 10:17:16,823 sd_inventory.py[line:614] INFO Start,getting parameters
+2017-02-16 10:18:30,585 sd_inventory.py[line:614] INFO Start,getting parameters
+2017-02-16 10:18:30,603 sd_inventory.py[line:643] INFO Computing...
+2017-02-16 10:18:30,603 sd_inventory.py[line:647] INFO Computing done, save data into file
+2017-02-16 10:45:02,342 sd_inventory.py[line:615] INFO Start,getting parameters
+2017-02-16 10:45:39,325 sd_inventory.py[line:615] INFO Start,getting parameters
+2017-02-16 10:51:17,333 sd_inventory.py[line:616] INFO Start,getting parameters
+2017-02-16 10:52:07,369 sd_inventory.py[line:617] INFO Start,getting parameters
+2017-02-16 10:53:12,555 sd_inventory.py[line:617] INFO Start,getting parameters
+2017-02-16 10:57:59,278 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 10:57:59,280 sd_inventory.py[line:647] INFO Computing...
+2017-02-16 10:57:59,280 sd_inventory.py[line:651] INFO Computing done, save data into file
+2017-02-16 11:01:12,561 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:01:12,563 sd_inventory.py[line:647] INFO Computing...
+2017-02-16 11:01:12,564 sd_inventory.py[line:651] INFO Computing done, save data into file
+2017-02-16 11:07:07,314 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:07:07,316 sd_inventory.py[line:647] INFO Computing...
+2017-02-16 11:07:07,317 sd_inventory.py[line:651] INFO Computing done, save data into file
+2017-02-16 11:09:23,498 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:09:23,500 sd_inventory.py[line:647] INFO Computing...
+2017-02-16 11:09:23,500 sd_inventory.py[line:651] INFO Computing done, save data into file
+2017-02-16 11:12:00,822 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:12:00,833 sd_inventory.py[line:647] INFO Computing...
+2017-02-16 11:12:00,833 sd_inventory.py[line:651] INFO Computing done, save data into file
+2017-02-16 11:12:38,306 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:12:38,316 sd_inventory.py[line:647] INFO Computing...
+2017-02-16 11:12:38,316 sd_inventory.py[line:651] INFO Computing done, save data into file
+2017-02-16 11:13:01,943 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:13:34,160 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:14:06,910 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:14:30,124 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:15:54,917 sd_inventory.py[line:618] INFO Start,getting parameters
+2017-02-16 11:16:18,643 sd_inventory.py[line:619] INFO Start,getting parameters
+2017-02-16 11:16:56,348 sd_inventory.py[line:620] INFO Start,getting parameters
+2017-02-16 11:17:21,699 sd_inventory.py[line:620] INFO Start,getting parameters
+2017-02-16 11:17:21,772 sd_inventory.py[line:649] INFO Computing...
+2017-02-16 11:17:21,772 sd_inventory.py[line:653] INFO Computing done, save data into file
+2017-02-16 11:19:42,974 sd_inventory.py[line:620] INFO Start,getting parameters
+2017-02-16 11:19:42,978 sd_inventory.py[line:649] INFO Computing...
+2017-02-16 11:19:42,978 sd_inventory.py[line:653] INFO Computing done, save data into file
+2017-02-16 11:20:19,952 sd_inventory.py[line:620] INFO Start,getting parameters
+2017-02-16 11:20:19,954 sd_inventory.py[line:649] INFO Computing...
+2017-02-16 11:20:19,954 sd_inventory.py[line:653] INFO Computing done, save data into file
+2017-02-16 11:20:54,166 sd_inventory.py[line:620] INFO Start,getting parameters
+2017-02-16 11:20:54,168 sd_inventory.py[line:649] INFO Computing...
+2017-02-16 11:20:54,168 sd_inventory.py[line:653] INFO Computing done, save data into file
+2017-02-16 11:21:41,370 sd_inventory.py[line:621] INFO Start,getting parameters
+2017-02-16 11:21:41,372 sd_inventory.py[line:650] INFO Computing...
+2017-02-16 11:21:41,372 sd_inventory.py[line:654] INFO Computing done, save data into file
+2017-02-16 11:22:30,955 sd_inventory.py[line:621] INFO Start,getting parameters
+2017-02-16 11:22:30,958 sd_inventory.py[line:650] INFO Computing...
+2017-02-16 11:22:30,958 sd_inventory.py[line:654] INFO Computing done, save data into file
+2017-02-16 11:23:45,428 sd_inventory.py[line:622] INFO Start,getting parameters
+2017-02-16 11:24:15,891 sd_inventory.py[line:622] INFO Start,getting parameters
+2017-02-16 11:25:18,232 sd_inventory.py[line:622] INFO Start,getting parameters
+2017-02-16 11:25:18,265 sd_inventory.py[line:651] INFO Computing...
+2017-02-16 11:25:18,265 sd_inventory.py[line:655] INFO Computing done, save data into file
+2017-02-16 11:25:43,178 sd_inventory.py[line:622] INFO Start,getting parameters
+2017-02-16 11:25:43,201 sd_inventory.py[line:651] INFO Computing...
+2017-02-16 11:25:43,202 sd_inventory.py[line:655] INFO Computing done, save data into file
+2017-02-16 11:31:11,064 sd_inventory.py[line:622] INFO Start,getting parameters
+2017-02-16 11:31:11,103 sd_inventory.py[line:651] INFO Computing...
+2017-02-16 11:31:11,104 sd_inventory.py[line:655] INFO Computing done, save data into file
+2017-02-16 11:31:40,538 sd_inventory.py[line:622] INFO Start,getting parameters
+2017-02-16 11:31:40,581 sd_inventory.py[line:651] INFO Computing...
+2017-02-16 11:31:40,581 sd_inventory.py[line:655] INFO Computing done, save data into file
+2017-02-16 11:32:19,396 sd_inventory.py[line:622] INFO Start,getting parameters
+2017-02-16 11:32:19,410 sd_inventory.py[line:651] INFO Computing...
+2017-02-16 11:32:19,410 sd_inventory.py[line:655] INFO Computing done, save data into file
+2017-02-16 11:40:46,537 sd_inventory.py[line:622] INFO Start,getting parameters
+2017-02-16 11:40:46,548 sd_inventory.py[line:651] INFO Computing...
+2017-02-16 11:40:46,548 sd_inventory.py[line:655] INFO Computing done, save data into file
+2017-02-16 15:54:29,541 sd_inventory.py[line:621] INFO Start,getting parameters
+2017-02-16 15:54:29,589 sd_inventory.py[line:650] INFO Computing...
+2017-02-16 15:54:29,590 sd_inventory.py[line:654] INFO Computing done, save data into file
+2017-02-16 15:54:38,681 sd_inventory.py[line:621] INFO Start,getting parameters
+2017-02-16 15:54:38,707 sd_inventory.py[line:650] INFO Computing...
+2017-02-16 15:54:38,708 sd_inventory.py[line:654] INFO Computing done, save data into file
+2017-02-17 15:41:44,007 sd_inventory.py[line:623] INFO Start,getting parameters
+2017-02-17 15:41:44,028 sd_inventory.py[line:652] INFO Computing...
+2017-02-17 15:41:44,028 sd_inventory.py[line:656] INFO Computing done, save data into file
+2017-02-17 15:43:36,277 sd_inventory.py[line:623] INFO Start,getting parameters
+2017-02-17 15:43:36,277 sd_inventory.py[line:652] INFO Computing...
+2017-02-17 15:43:36,277 sd_inventory.py[line:656] INFO Computing done, save data into file
+2017-02-17 15:44:51,745 sd_inventory.py[line:624] INFO Start,getting parameters
+2017-02-17 15:44:51,746 sd_inventory.py[line:653] INFO Computing...
+2017-02-17 15:44:51,746 sd_inventory.py[line:657] INFO Computing done, save data into file
+2017-02-17 15:45:11,254 sd_inventory.py[line:624] INFO Start,getting parameters
+2017-02-17 15:45:11,254 sd_inventory.py[line:653] INFO Computing...
+2017-02-17 15:45:11,254 sd_inventory.py[line:657] INFO Computing done, save data into file
+2017-02-17 15:45:21,658 sd_inventory.py[line:624] INFO Start,getting parameters
+2017-02-17 15:45:21,658 sd_inventory.py[line:653] INFO Computing...
+2017-02-17 15:45:21,658 sd_inventory.py[line:657] INFO Computing done, save data into file
+2017-02-17 15:51:55,935 sd_inventory.py[line:625] INFO Start,getting parameters
+2017-02-17 15:51:55,936 sd_inventory.py[line:654] INFO Computing...
+2017-02-17 15:51:55,936 sd_inventory.py[line:658] INFO Computing done, save data into file
+2017-02-17 15:52:27,542 sd_inventory.py[line:625] INFO Start,getting parameters
+2017-02-17 15:52:27,542 sd_inventory.py[line:654] INFO Computing...
+2017-02-17 15:52:27,542 sd_inventory.py[line:658] INFO Computing done, save data into file
+2017-02-17 16:01:40,225 sd_inventory.py[line:627] INFO Start,getting parameters
+2017-02-17 16:01:40,226 sd_inventory.py[line:656] INFO Computing...
+2017-02-17 16:01:40,226 sd_inventory.py[line:660] INFO Computing done, save data into file
+2017-02-17 16:05:14,504 sd_inventory.py[line:624] INFO Start,getting parameters
+2017-02-17 16:06:41,275 sd_inventory.py[line:626] INFO Start,getting parameters
+2017-02-17 16:06:41,275 sd_inventory.py[line:655] INFO Computing...
+2017-02-17 16:06:41,275 sd_inventory.py[line:659] INFO Computing done, save data into file
+2017-02-17 16:13:24,621 sd_inventory.py[line:626] INFO Start,getting parameters
+2017-02-17 16:13:24,621 sd_inventory.py[line:655] INFO Computing...
+2017-02-17 16:13:24,622 sd_inventory.py[line:659] INFO Computing done, save data into file
+2017-02-17 16:14:51,537 sd_inventory.py[line:627] INFO Start,getting parameters
+2017-02-17 16:14:51,539 sd_inventory.py[line:656] INFO Computing...
+2017-02-17 16:14:51,539 sd_inventory.py[line:660] INFO Computing done, save data into file
+2017-02-17 16:18:40,420 sd_inventory.py[line:628] INFO Start,getting parameters
+2017-02-17 16:18:40,421 sd_inventory.py[line:657] INFO Computing...
+2017-02-17 16:18:40,422 sd_inventory.py[line:661] INFO Computing done, save data into file
+2017-02-17 16:19:34,548 sd_inventory.py[line:628] INFO Start,getting parameters
+2017-02-17 16:19:34,549 sd_inventory.py[line:657] INFO Computing...
+2017-02-17 16:19:34,549 sd_inventory.py[line:661] INFO Computing done, save data into file
+2017-02-17 16:24:31,926 sd_inventory.py[line:629] INFO Start,getting parameters
+2017-02-17 16:24:31,927 sd_inventory.py[line:658] INFO Computing...
+2017-02-17 16:24:31,927 sd_inventory.py[line:662] INFO Computing done, save data into file
+2017-02-17 16:26:51,184 sd_inventory.py[line:628] INFO Start,getting parameters
+2017-02-17 16:26:51,185 sd_inventory.py[line:657] INFO Computing...
+2017-02-17 16:26:51,185 sd_inventory.py[line:661] INFO Computing done, save data into file
+2017-02-17 16:28:08,799 sd_inventory.py[line:625] INFO Start,getting parameters
+2017-02-17 16:28:08,834 sd_inventory.py[line:654] INFO Computing...
+2017-02-17 16:28:08,834 sd_inventory.py[line:658] INFO Computing done, save data into file
+2017-02-17 16:31:35,432 sd_inventory.py[line:626] INFO Start,getting parameters
+2017-02-17 16:31:35,452 sd_inventory.py[line:655] INFO Computing...
+2017-02-17 16:31:35,453 sd_inventory.py[line:659] INFO Computing done, save data into file
+2017-02-17 16:36:34,854 sd_inventory.py[line:627] INFO Start,getting parameters
+2017-02-17 16:36:34,878 sd_inventory.py[line:656] INFO Computing...
+2017-02-17 16:36:34,878 sd_inventory.py[line:660] INFO Computing done, save data into file
+2017-02-17 16:38:04,330 sd_inventory.py[line:628] INFO Start,getting parameters
+2017-02-17 16:38:04,364 sd_inventory.py[line:657] INFO Computing...
+2017-02-17 16:38:04,364 sd_inventory.py[line:661] INFO Computing done, save data into file
+2017-02-17 16:43:51,930 sd_inventory.py[line:625] INFO Start,getting parameters
+2017-02-17 16:43:51,949 sd_inventory.py[line:654] INFO Computing...
+2017-02-17 16:43:51,949 sd_inventory.py[line:658] INFO Computing done, save data into file

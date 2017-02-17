@@ -126,7 +126,7 @@ if __name__ == "__main__":
                          type="string")
     
     (options, args) = optparser.parse_args()
-
+  #  print(options,args)
     
     x,y = symbols("x y")
 

@@ -30,13 +30,13 @@ inventory_logger.addHandler(fh)
 
 
 dicts = {"best_order":"最优订货量", "inventory_cost":"单位时间内的存储费", "order_cost":"单位时间内的订货费", 
-         "total_fee":"总费用", "max_inventory":"最大存贮水平","ave_inventory":"平均存贮水平", 
-         "advance_point":"再订货点", "times":"订货次数", "days":"周期(每单位时间)", "shortage_cost":"单位时间内的缺货费", 
-         "best_product":"最佳生产量","product_cost":"生产费", "max_shortage":"最大缺货量", "ave_shortage":"平均缺货量",
+         "total_fee":"总费用", "max_inventory":"最大存储水平","ave_inventory":"平均存储水平", 
+         "advance_point":"再订货点", "times":"订货/生产次数", "days":"周期(每单位时间)", "shortage_cost":"单位时间内的缺货费", 
+         "best_product":"最佳生产量","product_cost":"单位时间内的生产费", "max_shortage":"最大缺货量", "ave_shortage":"平均缺货量",
          "C0":"供过于求时单位产品总成本", "Cu":"供不应求时单位产品的总成本", "SL":"最优服务水平","fQ":"最优期望收益",
          "cQ":"最优期望成本","EX":"需求均值","DX":"需求标准差",
          "B":"单位产品期望缺货成本","D":"需求的均值", "dl":"提前期内的平均需求量", "s":"再订货点", 
-         "SS":"安全存贮量", "shortage_percent":"缺货概率", "standard":"提前期内需求的标准差"}
+         "SS":"安全存储量", "shortage_percent":"缺货概率", "standard":"提前期内需求的标准差"}
 
 
 def EOQ(d, c, m, x, y):
@@ -72,6 +72,7 @@ def AEOQ(d, c, e, m, x, y):
 
     best_order = math.sqrt(2.0*d*c*(m+e)/(e*m))
     max_shortage = best_order*(m/(m+e))
+    ave_shortage = 1.0/2.0 *best_order* (m/m+e)**2 
     shortage_cost = max_shortage**2*e/(2*best_order)
     order_cost = d/best_order*c
     inventory_cost = m*(best_order-max_shortage)**2/(2*best_order)
@@ -83,9 +84,9 @@ def AEOQ(d, c, e, m, x, y):
     times = d/best_order
     
     return(["best_order", "inventory_cost", "order_cost", "shortage_cost", "total_fee", "max_inventory",
-            "ave_inventory", "max_shortage", "advance_point", "times", "days"],
+            "ave_inventory", "max_shortage", "ave_shortage", "advance_point", "times", "days"],
            [best_order, inventory_cost, order_cost, shortage_cost, total_fee, max_inventory,
-            ave_inventory, max_shortage, advance_point, times, days])
+            ave_inventory, max_shortage, ave_shortage, advance_point, times, days])
 
 def AEPQ(d, a, b, e, m, x, y):
     
@@ -101,13 +102,14 @@ def AEPQ(d, a, b, e, m, x, y):
     ave_shortage = max_shortage**2/(2*best_product*(1-d/a))
     max_inventory = ave_inventory*2+max_shortage
     days = y*best_product/d 
+    times = d/best_product
 
     advance_point = x*d/y - max_shortage
 
-    return(["best_product", "inventory_cost", "shortage_cost", "product_cost", "ave_inventory", "total_fee",
-            "max_inventory", "max_shortage", "ave_shortage", "advance_point", "days"],
-            [best_product, inventory_cost, shortage_cost, product_cost, ave_inventory, total_fee, max_inventory,
-             max_shortage, ave_shortage, advance_point, days])
+    return(["best_product", "inventory_cost", "shortage_cost", "product_cost", "total_fee",
+            "max_inventory", "ave_inventory", "max_shortage", "ave_shortage", "advance_point", "times", "days"],
+            [best_product, inventory_cost, shortage_cost, product_cost, total_fee, max_inventory, ave_inventory,
+             max_shortage, ave_shortage, advance_point, times, days])
 
 
 # example 1 in yfj's ppt No.19 page
@@ -144,9 +146,9 @@ def EODQ(d, c, m, price, number, x, y):
     times = d/best_order
     
     return(["best_order",  "inventory_cost", "order_cost", "total_fee", "max_inventory", 
-            "ave_inventory", "advance_point", "days", "times"],
+            "ave_inventory", "advance_point", "times", "days"],
            [best_order,  inventory_cost, order_cost, total_fee,  max_inventory, 
-            ave_inventory, advance_point, days, times])
+            ave_inventory, advance_point, days, times, days])
 
 
 # example 2 in yfj's ppt No.20 page
@@ -184,10 +186,10 @@ def AEODQ(d, c, e, m, price, number, x, y):
     days = y/(d/best_order)
     times = d/best_order
 
-    return(["best_order", "max_shortage", "shortage_cost", "ave_shortage", "inventory_cost","order_cost",
-            "total_fee", "max_inventory", "ave_inventory", "advance_point", "days", "times"],
-    	   [best_order, max_shortage, shortage_cost, ave_shortage, inventory_cost,order_cost,
-    	     total_fee, max_inventory, ave_inventory, advance_point, days, times])
+    return(["best_order", "max_shortage", "ave_shortage", "shortage_cost", "max_inventory", "ave_inventory",
+            "inventory_cost","order_cost","total_fee", "advance_point", "times", "days"],
+    	   [best_order, max_shortage, ave_shortage, shortage_cost, max_inventory, ave_inventory, inventory_cost,order_cost,
+    	     total_fee, advance_point, times, days])
 
 # example 3 in yfj's ppt No.21
 def EOPQ(d, a, c, m, price, number, x, y):
@@ -225,9 +227,9 @@ def EOPQ(d, a, c, m, price, number, x, y):
     times = d/best_order
 
     return(["best_order", "inventory_cost","order_cost", "total_fee", "max_inventory","ave_inventory",
-    	    "advance_point", "days", "times"],
+    	    "advance_point", "times", "days"],
            [best_order, inventory_cost, order_cost, total_fee, max_inventory, ave_inventory,
-            advance_point, days, times])
+            advance_point, times, days])
 
 # example 4 in yfj's ppt No.22
 def AEOPQ(d, a, c, e, m, price, number, x, y):
@@ -265,10 +267,10 @@ def AEOPQ(d, a, c, e, m, price, number, x, y):
     days = y/(d/best_order)
     times = d/best_order
 
-    return(["best_order", "max_shortage","ave_shortage", "inventory_cost", "order_cost", "total_fee",
-            "max_inventory", "ave_inventory", "advance_point", "days", "times"],
-            [best_order, max_shortage, ave_shortage, inventory_cost, order_cost, total_fee,
-             max_inventory, ave_inventory, advance_point, days, times])
+    return(["best_order", "max_shortage","ave_shortage", "inventory_cost", "shortage_cost","order_cost", "total_fee",
+            "max_inventory", "ave_inventory", "advance_point", "times", "days"],
+            [best_order, max_shortage, ave_shortage, inventory_cost, shortage_cost, order_cost, total_fee,
+             max_inventory, ave_inventory, advance_point, times, days])
 
 def RandomRequestPossion(a,c, p, s, b, h, l, number, frequency):
     """
@@ -308,8 +310,8 @@ def RandomRequestPossion(a,c, p, s, b, h, l, number, frequency):
     cQ =  C0*sum([(best_order-number[i])*frequency[i] for i in range(index+1)]) + Cu*sum([(number[i]-best_order)*frequency[i] for i in range(index+1, len(frequency))]) + a
     fQ = sum([((p-s+h)*number[i] - C0*best_order)*frequency[i] for i in range(index+1)]) + sum([(Cu*best_order-b*number[i])*frequency[i] for i in range(index+1, len(frequency))]) - a
     
-    return(["EX","DX","C0", "Cu", "best_order","SL",  "fQ", "cQ"],
-    	   [EX, DX, C0, Cu, best_order, SL, fQ, cQ])
+    return(["best_order","SL", "fQ", "cQ", "EX","DX","C0", "Cu"],
+    	   [best_order, SL, fQ, cQ, EX, DX, C0, Cu])
 
 def RandomRequestUniform(a,c, b, p, s, h, distribution):
     """
@@ -329,8 +331,8 @@ def RandomRequestUniform(a,c, b, p, s, h, distribution):
     fQ = (Cu+C0)*(SL*distribution[0]+diff_ave*SL**2) - b*add_ave - a
     cQ = Cu*add_ave - (C0+Cu)*(SL*distribution[0]+diff_ave*SL**2) + a
 
-    return(["EX","DX","C0", "Cu", "best_order","SL",  "fQ", "cQ"],
-    	   [EX, DX, C0, Cu, best_order, SL, fQ, cQ])
+    return(["best_order","SL", "fQ", "cQ", "EX","DX","C0", "Cu"],
+    	   [best_order, SL, fQ, cQ, EX, DX, C0, Cu])
 
 def RandomRequestExponential(a,c, p, s, b, h, position, scale):
     C0 = c-s+h
@@ -343,8 +345,8 @@ def RandomRequestExponential(a,c, p, s, b, h, position, scale):
     fQ = (Cu+C0) * ((position+1.0/scale)*SL + (1-SL)*math.log(1-SL)/scale) - b*(position+1.0/scale) - a
     cQ = Cu * (position+1.0/scale) - (Cu+C0)*((position+1.0/scale)*SL+(1-SL)*math.log(1-SL)/scale) + a
 
-    return(["EX","DX","C0", "Cu", "best_order","SL",  "fQ", "cQ"],
-    	   [EX, DX, C0, Cu, best_order, SL, fQ, cQ])
+    return(["best_order","SL",  "fQ", "cQ", "EX","DX","C0", "Cu"],
+    	   [best_order, SL, fQ, cQ, EX, DX, C0, Cu])
 
 def RandomRequestNormal(a,c, p, s, b, h, average, standard_deviation):
     C0 = c-s+h
@@ -357,8 +359,8 @@ def RandomRequestNormal(a,c, p, s, b, h, average, standard_deviation):
     fQ = best_order*Cu - (Cu+C0)*best_order*SL + (Cu+C0)*(average*SL-standard_deviation*norm.pdf((best_order-average)/standard_deviation, loc=0, scale=1)) - b*average - a  
     cQ = -(Cu+C0)*(average*SL-standard_deviation*norm.pdf((best_order-average)/standard_deviation, loc=0, scale=1)) + Cu*average + a
     
-    return(["EX","DX","C0", "Cu", "best_order","SL",  "fQ", "cQ"],
-    	   [EX, DX, C0, Cu, best_order, SL, fQ, cQ])
+    return(["best_order","SL",  "fQ", "cQ", "EX","DX","C0", "Cu"],
+    	   [best_order, SL, fQ, cQ, EX, DX, C0, Cu])
 
 def s_Q_Uniform(a, c, h, p, e, q, o, B1, w, x, y, uniform):
     B = p*e + q*o
@@ -373,6 +375,7 @@ def s_Q_Uniform(a, c, h, p, e, q, o, B1, w, x, y, uniform):
        i = math.sqrt(2*D*(a+B*(dl+(s**2)/(4.0*dl)-s) + B1*(1-s/(2.0*dl)))/h) - best_order
        best_order = math.sqrt(2*D*(a+B*(dl+(s**2)/(4.0*dl)-s) + B1*(1-s/(2.0*dl)))/h)
     
+    s = 2.0*dl*(1-(h*best_order-B1*D/(2*dl))/(q*h*best_order+B*D))
     SS = s - dl
     ave_shortage = dl + (s**2)/(2*2*dl) - s
     shortage_percent = 1 - s/(2*dl)
@@ -382,9 +385,9 @@ def s_Q_Uniform(a, c, h, p, e, q, o, B1, w, x, y, uniform):
     shortage_cost = (B*D*ave_shortage+shortage_percent*B1*D)/best_order
     total_fee = order_cost + inventory_cost + shortage_cost
 
-    return(["B", "D", "dl", "s", "best_order", "SS", "ave_shortage", "shortage_percent",
+    return(["s", "best_order", "SS", "ave_shortage", "shortage_percent",
     	    "order_cost", "inventory_cost", "shortage_cost", "total_fee"],
-    	    [B, D, dl, s, best_order, SS,ave_shortage, shortage_percent,
+    	    [s, best_order, SS,ave_shortage, shortage_percent,
     	     order_cost, inventory_cost, shortage_cost, total_fee])
 
 def s_Q_Exponential(a, c, h, p, e, q, o, B1, w, x, y, l):
@@ -395,11 +398,12 @@ def s_Q_Exponential(a, c, h, p, e, q, o, B1, w, x, y, l):
     i = float("inf")
     best_order = math.sqrt(2.0*D*a/h)
 
-    while w<i:
+    while w<i:   
        s = -dl*math.log(h*best_order/(q*h*best_order+B*D+B1*D/dl))
        i = math.sqrt( 2*D*(a+B*dl*exp(-s/dl)+B1*exp(-s/dl))/h ) - best_order
-       best_order = math.sqrt( 2*D*(a+B*dl*exp(-s/dl)+B1*exp(-s/dl))/h )
+       best_order = math.sqrt( 2*D*(a+B*dl*exp(-s/dl)+B1*exp(-s/dl))/h)
 
+    s = -dl*math.log(h*best_order/(q*h*best_order+B*D+B1*D/dl))
     SS = s - dl
     ave_shortage = dl*exp(-s/dl)
     shortage_percent = exp(-s/dl)
@@ -409,9 +413,9 @@ def s_Q_Exponential(a, c, h, p, e, q, o, B1, w, x, y, l):
     shortage_cost = (B*D*ave_shortage+shortage_percent*B1*D)/best_order
     total_fee = order_cost + inventory_cost + shortage_cost
 
-    return(["B", "D", "dl", "s", "best_order", "SS", "ave_shortage", "shortage_percent",
+    return(["s", "best_order", "SS", "ave_shortage", "shortage_percent",
     	    "order_cost", "inventory_cost", "shortage_cost", "total_fee"],
-    	    [B, D, dl, s, best_order, SS,ave_shortage, shortage_percent,
+    	    [s, best_order, SS,ave_shortage, shortage_percent,
     	     order_cost, inventory_cost, shortage_cost, total_fee])
 
 def s_Q_Normal(a, c, h, p, e, q, o, B1, w, x, y, average, standard_deviation):
@@ -422,7 +426,8 @@ def s_Q_Normal(a, c, h, p, e, q, o, B1, w, x, y, average, standard_deviation):
     best_order = math.sqrt(2.0*D*a/h)
 
     standard = standard_deviation*math.sqrt(x/y)
-
+    
+    I = [0]
     while w<i:
         def f(s,h,best_order,B1,D,B,q):
             return norm.cdf(s,loc=dl, scale=standard) - 1 + (h*best_order-B1*D*norm.pdf(s,loc=dl,scale=standard))/(q*h*best_order
@@ -430,9 +435,15 @@ def s_Q_Normal(a, c, h, p, e, q, o, B1, w, x, y, average, standard_deviation):
 
         s = fsolve(f,x0=0, args=(h,best_order,B1,D,B,q))[0]
         i = math.sqrt(2*D/h*(a+B*(standard*norm.pdf((s-dl)/standard, loc=0, scale=1)+(dl-s)*(1-norm.cdf(s, loc = dl, scale= standard))))) - best_order
+        I.append(i)
+        
         best_order = math.sqrt(2*D/h*(a+B*(standard*norm.pdf((s-dl)/standard, loc=0, scale=1)+(dl-s)*(1-norm.cdf(s, loc = dl, scale= standard))) + B1*1-norm.cdf(s,loc=dl, scale=standard)))
+        
 
-    
+        if len(I)>2:
+		    if abs(I[-2]-I[-1]) <= 0.000001:
+		       i = w
+	s = fsolve(f,x0=0, args=(h,best_order,B1,D,B,q))[0]	    
     SS = s - dl
     ave_shortage = standard*norm.pdf((s-dl)/standard, loc=0, scale=1)+(dl-s)*(1-norm.cdf(s, loc = dl, scale= standard))
     shortage_percent = 1-norm.cdf(s,loc=dl, scale=standard)
@@ -442,9 +453,9 @@ def s_Q_Normal(a, c, h, p, e, q, o, B1, w, x, y, average, standard_deviation):
     shortage_cost = (B*D*ave_shortage+shortage_percent*B1*D)/best_order
     total_fee = order_cost + inventory_cost + shortage_cost
 
-    return(["B", "D", "dl", "standard", "s", "best_order", "SS", "ave_shortage", "shortage_percent",
+    return(["s", "best_order", "SS", "ave_shortage", "shortage_percent",
     	    "order_cost", "inventory_cost", "shortage_cost", "total_fee"],
-    	    [B, D, dl, standard, s, best_order, SS,ave_shortage, shortage_percent,
+    	    [s, best_order, SS,ave_shortage, shortage_percent,
     	     order_cost, inventory_cost, shortage_cost, total_fee])
 
 def main(method, d, a, b, c, e, m, o, s, t, j, w, x, y, price, number):
