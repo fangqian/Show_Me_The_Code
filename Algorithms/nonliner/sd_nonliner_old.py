@@ -1,10 +1,33 @@
 # -*- coding:utf-8 -*-
-import numpy as np
+
+'''
+Description : Check the data input 
+require     : windows Anaconda-2.3.0
+author      : qiangu_fang@163.com
+usage  $ python sd_inventory.py -d -a ...
+'''
+import os
+import sys
+import logging
 import math
+import numpy as np
+import pandas as pd
 from sympy import *
 from optparse import OptionParser
 import numpy.linalg as LA
 from numba import jit
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PAR_DIR = os.path.dirname(BASE_DIR)
+
+nonliner_logger = logging.getLogger('SD_API.Method.sd_nonliner')
+nonliner_logger.setLevel(logging.INFO)
+fh = logging.FileHandler(PAR_DIR + os.path.sep + "LOG" + os.path.sep + "SD_Nonliner.log")
+fh.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+fh.setFormatter(formatter)
+nonliner_logger.addHandler(fh)
 
 # 线搜索算法框架
 # 输入 (目标函数，梯度函数，起始点，方向算法，步长算法，方向算法的参数，步长算法的参数，
@@ -14,29 +37,30 @@ from numba import jit
 @jit
 def line_search(f, fun, grad, init, direction_algo, steplength_algo, \
                 direction_params=None, steplength_params=None, epsilon=0, iterations=float('inf')):
+    nonliner_logger.info("Start computing...")
     sequence = [init]         # 起始点
     data = init
     prev_val = float('inf')    # 正无穷
     counter = 0
+    abs_fx = [[fun(f,data),None]]
+
     while abs(fun(f,data)-prev_val)>epsilon and counter<iterations:
-        print("=============")
         p = direction_algo(f,grad,data,hess)
         s = steplength_algo(f,grad,data)
         prev_val = fun(f,data)
         counter += 1
         data = data+float(s)*p
         sequence.append(data)    # 遍历的点坐标
-    print(sequence)
-    return(sequence)
+        abs_fx.append([fun(f,data), abs(fun(f,data)-prev_val)])
+
+    sequence = np.hstack((sequence,abs_fx))
+    return(pd.DataFrame(sequence, columns = ["x","y","f(x)","|Δf(x)|"]))
 	
 # 梯度下降方向算法
 # 输入 (目标函数，梯度函数，x)
 # 输出在 x 的负梯度向量
 def grad_descent(f, grad, data, hess):
-    print("zzzzzzzz")
-    print(-(grad(f,data))/(LA.norm(grad(f,data),2)))
-    print("zzzzzzzz")
-
+    # print(np.linalg.norm(grad(f,data)))     #print |G(k)|
     return -(grad(f,data))/(np.linalg.norm(grad(f,data)))
 	
 # 牛顿方向算法
@@ -55,18 +79,6 @@ def newton_method(f, grad, x, hess):
 def is_pos_def(mat):
     return(np.all(np.linalg.eigvals(mat) > 0) and np.all(mat==mat.T))
 	
-# # 回溯步长算法
-# # 输入 (目标函数，梯度函数，起始点，方向，参数)
-# # 参数是 (初始 alpha，每次迭代的缩减倍数，Armijo 条件中的 c1)
-# # 返回一个合适的步长
-# @jit
-# def backtrack(f,grad,x,p, params):
-#     (alpha, rho, c) = params
-#     a = alpha
-#     while f(x+a*p)>f(x)+c*a*p.dot(grad(x)):
-#         a = a*rho
-#     return a
-
 
 def grad(f,data):
     return np.array([float(diff(f,x).subs({x:data[0],y:data[1]})), float(diff(f,y).subs({x:data[0],y:data[1]}))])
@@ -76,25 +88,15 @@ def grad(f,data):
 #————————————————————————————————
 # 梯度 × f(x)的海瑟矩阵 × 梯度的转置
 def best_track(f,grad,data):
-    # print("yyyyyy")
-    # print(grad(f,data))
-    # print(grad(f,data).dot(np.mat(grad(f,data)).T).dot(np.linalg.norm(grad(f,data))))/(grad(f,data).dot(hess(f,data)).dot(np.mat(grad(f,data)).T))
-
     tidu = grad(f,data)
     tidu.shape = (1,2)
-    print(tidu)
-    print("XXXXXX")
-    print(tidu.dot(np.mat(tidu).T).dot(LA.norm(tidu)))/(tidu.dot(hess(f,data)).dot(np.mat(tidu).T))
+
     return (tidu.dot(np.mat(tidu).T).dot(LA.norm(tidu)))/(tidu.dot(hess(f,data)).dot(np.mat(tidu).T))
 
-
-
 def fun(f,data):
+    """return f(x) value at position data([x,y])"""
     return f.subs({x:data[0],y:data[1]})
-
-
-    
-    
+       
 def hess(f,data):
     return np.array([[diff(f,x,x),diff(f,x,y)], [diff(f,y,x),diff(f,y,y)]])
 
@@ -129,38 +131,31 @@ if __name__ == "__main__":
 
     
     x,y = symbols("x y")
-
     f = eval(options.func)
-  #  print(type(f),f)
     data = np.array([0.0,0.0])
-  #  print("**********************")
-  #  print(np.array([diff(f,x).subs({x:data[0],y:data[1]}), diff(f,y).subs({x:data[0],y:data[1]})]))
- #   print("**********************")
 
     e = options.epsilon
-  #  print(type(e),e)
 
     n = options.number
-   # print(type(n),n)
 
     s = eval(options.start_point)
-   # print(type(s),s)
- 
-
-    # (args) = symbols(str(args[0],args[1]))
-    #x,y = symbols("x y")
-    # a = eval(f)
-
-    # def fun(f,data):
-    #     return f.subs({x:data[0],y:data[1]})
-
-    # def grad(a,data):
-    #     return np.array([diff(f,x).subs({x:data[0],y:data[1]}), diff(f,y).subs({x:data[0],y:data[1]})])
-        
-    # def hess(a,data):
-    #     return np.array([[diff(f,x,x),diff(f,x,y)], [diff(f,y,x),diff(f,y,y)]])
 
     point = np.array([0.0,0.0])
 
-    print(fun(f,point),grad(f,point),hess(f,point))
-    result = line_search(f, fun, grad, np.array(s), grad_descent, best_track,direction_params=None, steplength_params=None,epsilon=0.1)
+    nonliner_logger.info("Start,getting parameters")
+
+    result = line_search(f, fun, grad, np.array(s), grad_descent, best_track,direction_params=None, steplength_params=None,epsilon=e)
+    nonliner_logger.info("Computing done! Save result to file")
+
+    full_name = os.path.dirname(os.path.dirname(os.path.realpath(sys.argv[0])))
+    result_name = full_name +os.path.sep+"pythonFiles"+os.path.sep+"sd_nonliner_result.txt"
+
+
+    for x in result.columns:
+        if len(result[x])>2:
+            try:
+                result[x][1:]=result[x][1:].map('{:,.4f}'.format)
+            except Exception,e:
+                break
+    result.to_csv(result_name,float_format='%.4f',index = False, header=True, sep="\t")
+    
