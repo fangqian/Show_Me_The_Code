@@ -17,7 +17,7 @@ def knapsack(w, v, c):                         # Returns solution matrices
             P[k][r] = keep > drop              # Did we keep it?
     return m, P                                # return full results
 
-# unbounded_knapsack
+# unbounded knapsack
 def unbounded_knapsack(w, v, c):
     m = [0]
     for r in range(1,c+1):
@@ -29,11 +29,34 @@ def unbounded_knapsack(w, v, c):
     print m
     return m[c]
 
-w = [3,4,5]
-v = [60,40,60]
-c = 12
+# multiple kanspack
+def multiple_knapsack(n,c,w,v,amount):  
+    res=[[0 for j in range(c+1)] for i in range(n+1)]
 
-unbounded_knapsack(w,v,c)
+    for i in range(1,n+1):  
+        for j in range(0,c+1):  
+            res[i][j]=res[i-1][j]
+            for k in xrange(0,min(j/w[i-1],amount[i-1])+1):
+                if j>=k*w[i-1] and res[i][j]<=res[i-1][j-k*w[i-1]]+k*v[i-1]:  
+                    res[i][j]=res[i-1][j-k*w[i-1]]+k*v[i-1]
+    print res[n][c]                       
+    return res[n][c] 
+
+
+
+n=6  
+c=16
+w=[3,4,5,6,7,7]  
+v=[6,7,8,9,10,10]
+amount=[1,1,1,1,1,1]
+
+multiple_knapsack(n,c,w,v,amount)
+
+# w = [3,2,5]
+# v = [60,40,60]
+# c = 12
+
+# unbounded_knapsack(w,v,c)
 
 # w = [0,3,4,5,6,7,7]
 # v = [0,6,7,8,9,10,10]
