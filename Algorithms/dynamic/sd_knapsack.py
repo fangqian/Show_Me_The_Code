@@ -4,7 +4,7 @@
 Description : Check the data input 
 require     : windows Anaconda-2.3.0
 author      : qiangu_fang@163.com
-usage  $ python sd_knapsack.py -d -a ...
+usage  $ python sd_inventory.py -d -a ...
 '''
 
 import os
@@ -13,6 +13,17 @@ import logging
 import pandas as pd
 from itertools import product
 from optparse import OptionParser
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PAR_DIR = os.path.dirname(BASE_DIR)
+
+knapsack_logger = logging.getLogger('SD_API.Method.sd_knapsack')
+knapsack_logger.setLevel(logging.INFO)
+fh = logging.FileHandler(PAR_DIR + os.path.sep + "LOG" + os.path.sep + "SD_Knapsack.log")
+fh.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+fh.setFormatter(formatter)
+knapsack_logger.addHandler(fh)
 
 # 0-1 knapsack
 def knapsack(c, w, v, amount, s):              # Returns solution matrices
@@ -36,6 +47,7 @@ def knapsack(c, w, v, amount, s):              # Returns solution matrices
                 items.append(i)
                 r -= w[i]
             k -= 1
+        #items.reverse()
         for i in items:amount[i] = 1 
         items = amount
 
@@ -140,6 +152,8 @@ def main(f,c,w,v,m,s,result_name):
 
         results = pd.DataFrame(result,columns=colum)
 
+        knapsack_logger.info("Only one plan")
+
         results.to_csv(result_name,index = False, mode = "a", header=False, sep="\t")
 
     elif len(item)>1:
@@ -158,8 +172,9 @@ def main(f,c,w,v,m,s,result_name):
                       "剩余容量":surplus_capacity,
             }
             
-            print result
             results = pd.DataFrame(result,columns=colum)
+
+            knapsack_logger.info("Show all plans if have, maybe waste long time")
 
             results.to_csv(result_name,index = False, mode = "a", header=False, sep="\t")
 
@@ -167,6 +182,7 @@ def main(f,c,w,v,m,s,result_name):
                 f.write("######\n")
     else:
         print("Error, haven't return item")
+        knapsack_logger.info("Error, haven't return item")
 
     return item
 
@@ -223,5 +239,6 @@ if __name__ == "__main__":
     full_name = os.path.dirname(os.path.dirname(os.path.realpath(sys.argv[0])))
     result_name = full_name +os.path.sep+"pythonFiles"+os.path.sep+"sd_knapsack_result.txt"
 
+    knapsack_logger.info("Parameters received done!, start computing")
     main(f,c,w,v,m,s,result_name)
 
