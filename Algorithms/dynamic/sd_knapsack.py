@@ -121,8 +121,7 @@ def multiple_knapsack(c,w,v,amount,s):
             if res[n][c] != sum(temp) or sum(weight)>c:continue
 
             else:
-              items.append(x)
-
+              items.append(list(x))
     return items,res[n][c]
 
 def main(f,c,w,v,m,s,result_name):
@@ -156,7 +155,7 @@ def main(f,c,w,v,m,s,result_name):
 
         results.to_csv(result_name,index = False, mode = "a", header=False, sep="\t")
 
-    elif len(item)>1:
+    elif item:
         for x in item:
             capacity = c
             surplus_capacity = []
@@ -232,7 +231,8 @@ if __name__ == "__main__":
     v = eval(options.value)
 
     if f == knapsack:m = [0]*len(w)
-    else:m = eval(options.amount)
+    elif options.amount:m = eval(options.amount)
+    else: m = [0]*len(w)
 
     s = options.scheme
 

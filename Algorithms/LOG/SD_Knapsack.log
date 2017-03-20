@@ -8,3 +8,51 @@
 2017-03-06 09:28:22,172 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
 2017-03-06 09:28:22,175 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
 2017-03-06 09:28:22,177 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:37:42,466 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:37:42,477 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:37:42,478 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:37:42,479 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:37:42,480 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:38:05,993 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:38:05,994 sd_knapsack.py[line:155] INFO Only one plan
+2017-03-09 14:40:20,117 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:40:20,119 sd_knapsack.py[line:155] INFO Only one plan
+2017-03-09 14:40:25,910 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:40:25,911 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:40:25,913 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:40:25,913 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:40:25,914 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:45:43,351 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:45:43,353 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:45:43,354 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:45:43,355 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:45:43,356 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:45:55,253 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:45:55,255 sd_knapsack.py[line:155] INFO Only one plan
+2017-03-09 14:50:40,392 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:50:40,394 sd_knapsack.py[line:155] INFO Only one plan
+2017-03-09 14:51:48,947 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:51:48,949 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:51:48,950 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:58:13,279 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:58:13,304 sd_knapsack.py[line:155] INFO Only one plan
+2017-03-09 14:59:11,546 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:59:11,570 sd_knapsack.py[line:155] INFO Only one plan
+2017-03-09 14:59:31,881 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 14:59:32,243 sd_knapsack.py[line:185] INFO Error, haven't return item
+2017-03-09 15:00:17,517 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 15:00:17,878 sd_knapsack.py[line:185] INFO Error, haven't return item
+2017-03-09 15:01:16,317 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 15:01:45,785 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 15:02:16,380 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 15:03:19,280 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 15:03:19,652 sd_knapsack.py[line:185] INFO Error, haven't return item
+2017-03-09 15:03:47,057 sd_knapsack.py[line:242] INFO Parameters received done!, start computing
+2017-03-09 15:03:47,419 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 15:17:58,973 sd_knapsack.py[line:243] INFO Parameters received done!, start computing
+2017-03-09 15:17:59,006 sd_knapsack.py[line:155] INFO Only one plan
+2017-03-09 15:36:28,803 sd_knapsack.py[line:243] INFO Parameters received done!, start computing
+2017-03-09 15:36:28,805 sd_knapsack.py[line:155] INFO Only one plan
+2017-03-09 15:36:34,610 sd_knapsack.py[line:243] INFO Parameters received done!, start computing
+2017-03-09 15:36:34,612 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-09 15:36:34,613 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time

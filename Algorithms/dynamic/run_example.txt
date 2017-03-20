@@ -1,0 +1,32 @@
+multiple:
+python sd_knapsack.py -f multiple_knapsack -c 20 -w "[3,4,5]" -v "[4,5,6]" -m "[0,2,2]" -s 2
+
+python sd_knapsack.py -f multiple_knapsack -c 20 -w "[3,4,5]" -v "[4,5,6]" -m "[0,2,2]" -s 1
+
+python sd_knapsack.py -f multiple_knapsack -c 800 -w "[20,15,40,60,30]" -v "[40,25,60,70,50]" -m "[10,10,10,10,10]" -s 1
+
+unlimited
+python sd_knapsack.py -f multiple_knapsack -c 10 -w "[3,2,5]" -v "[60,40,60]" -s 2
+
+0-1 knapsack:
+python sd_knapsack.py -f multiple_knapsack -c 800 -w "[20,15,40,60,30]" -v "[40,25,60,70,50]" -m "[10,10,10,10,10]" -s 2
+
+python sd_knapsack.py -f multiple_knapsack -c 800 -w "[20,15,40,60,30]" -v "[40,25,60,70,50]" -m "[10,10,10,10,10]" -s 1
+
+
+resource:
+python sd_resource.py -r "[0,2,4,6,8]" -v "[[0,8,15,30,38],[0,9,20,35,40],[0,10,28,35,43]]" -s 2
+
+python sd_resource.py -r "[0,2,4,6,8]" -v "[[0,8,15,30,38],[0,9,20,35,40],[0,10,28,35,43]]" -s 2
+
+
+product:
+需求量:d
+生产能力:p
+单位产品生产成本:c
+单位产品存储成本:f
+最大存储量:s
+固定生产成本:t
+期初存储量:o
+
+python sd_product.py -d "[2,3,4,2]" -p "[6,4,5,4]" -c [1,1,1,1] -f[0.5,0.5,0.5,0.5] -s[3,3,3,3] -t [3,3,3,3] -o 0

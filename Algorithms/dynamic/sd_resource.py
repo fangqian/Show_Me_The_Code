@@ -26,6 +26,9 @@ fh.setFormatter(formatter)
 resource_logger.addHandler(fh)
 
 def sourece_allot(r,v,s):
+    r.insert(0,0)
+    for x in v:
+        x.insert(0,0)
     m = len(r)
     n = len(v)
     f=[[0 for i in range(m)] for j in range(n)]
@@ -41,15 +44,14 @@ def sourece_allot(r,v,s):
     if s == 1:
     	k=m-1
     	for j in reversed(range(0,n)):
-    		#print ('The project is:',j+1,';The investment is:',r[p[j][k]])
             items.append(r[p[j][k]])
     	    k=k-p[j][k]
         items.reverse()
 
     else:
-        lists =  product(range(m+1),repeat=n)
+        lists =  product(range(m),repeat=n)
         for x in lists:
-            if sum(x) > max(r):continue
+            if sum([r[i] for i in x]) > max(r):continue
 
             temp = []
             weight = []
@@ -59,7 +61,7 @@ def sourece_allot(r,v,s):
             if max_value != sum(temp) or sum(weight)>m:continue
 
             else:
-              items.append(x)
+              items.append(list(x))
 
     return max_value, items
         
@@ -74,7 +76,7 @@ def main(r,v,s,result_name):
 
     colum = ["投入资源数", "项目收益", "剩余资源"]
 
-    if s == 1:
+    if  s == 1:
         resource_logger.info("Only one plan")
         residual_resources = []
         total_resource = max(r)
@@ -89,7 +91,7 @@ def main(r,v,s,result_name):
         results = pd.DataFrame(result,columns=colum)
         results.to_csv(result_name,index = False, mode = "a", header=False, sep="\t")
 
-    elif len(items)>1:
+    elif items:
         resource_logger.info("Show all plans if have, maybe waste long time")
         for x in items:
             residual_resources = []

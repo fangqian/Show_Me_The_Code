@@ -1,0 +1,81 @@
+2017-03-08 16:06:53,133 sd_resource.py[line:141] INFO Parameters received done!, start computing
+2017-03-08 16:08:05,403 sd_resource.py[line:144] INFO Parameters received done!, start computing
+2017-03-08 16:08:28,663 sd_resource.py[line:144] INFO Parameters received done!, start computing
+2017-03-08 16:08:28,664 sd_resource.py[line:93] INFO Show all plans if have, maybe waste long time
+2017-03-09 08:50:28,777 sd_resource.py[line:144] INFO Parameters received done!, start computing
+2017-03-09 08:50:28,785 sd_resource.py[line:78] INFO Only one plan
+2017-03-09 08:50:54,308 sd_resource.py[line:144] INFO Parameters received done!, start computing
+2017-03-09 08:55:58,013 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 08:56:34,520 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 08:58:25,113 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 08:58:25,120 sd_resource.py[line:94] INFO Show all plans if have, maybe waste long time
+2017-03-09 09:48:33,305 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 09:48:33,314 sd_resource.py[line:79] INFO Only one plan
+2017-03-09 09:48:40,057 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 09:48:54,568 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 09:48:54,574 sd_resource.py[line:94] INFO Show all plans if have, maybe waste long time
+2017-03-09 09:49:26,366 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 09:49:39,279 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 09:49:39,285 sd_resource.py[line:94] INFO Show all plans if have, maybe waste long time
+2017-03-09 09:50:33,324 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 09:54:48,456 sd_resource.py[line:145] INFO Parameters received done!, start computing
+2017-03-09 09:55:32,550 sd_resource.py[line:146] INFO Parameters received done!, start computing
+2017-03-09 09:57:04,896 sd_resource.py[line:146] INFO Parameters received done!, start computing
+2017-03-09 09:57:04,908 sd_resource.py[line:116] INFO Error, haven't return items
+2017-03-09 09:57:33,762 sd_resource.py[line:146] INFO Parameters received done!, start computing
+2017-03-09 09:57:33,767 sd_resource.py[line:80] INFO Only one plan
+2017-03-09 09:58:22,799 sd_resource.py[line:147] INFO Parameters received done!, start computing
+2017-03-09 09:58:22,803 sd_resource.py[line:81] INFO Only one plan
+2017-03-09 09:58:40,346 sd_resource.py[line:147] INFO Parameters received done!, start computing
+2017-03-09 09:58:40,350 sd_resource.py[line:81] INFO Only one plan
+2017-03-09 09:59:28,570 sd_resource.py[line:147] INFO Parameters received done!, start computing
+2017-03-09 09:59:28,571 sd_resource.py[line:96] INFO Show all plans if have, maybe waste long time
+2017-03-09 10:00:56,370 sd_resource.py[line:147] INFO Parameters received done!, start computing
+2017-03-09 10:00:56,370 sd_resource.py[line:81] INFO Only one plan
+2017-03-09 10:01:39,775 sd_resource.py[line:147] INFO Parameters received done!, start computing
+2017-03-09 10:01:39,780 sd_resource.py[line:117] INFO Error, haven't return items
+2017-03-09 10:02:02,946 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:02:02,951 sd_resource.py[line:118] INFO Error, haven't return items
+2017-03-09 10:02:24,231 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:02:24,232 sd_resource.py[line:118] INFO Error, haven't return items
+2017-03-09 10:02:50,343 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:02:50,344 sd_resource.py[line:118] INFO Error, haven't return items
+2017-03-09 10:03:17,635 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:03:17,635 sd_resource.py[line:82] INFO Only one plan
+2017-03-09 10:04:02,501 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:04:02,501 sd_resource.py[line:97] INFO Show all plans if have, maybe waste long time
+2017-03-09 10:04:21,308 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:04:21,309 sd_resource.py[line:97] INFO Show all plans if have, maybe waste long time
+2017-03-09 10:04:25,887 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:04:25,888 sd_resource.py[line:82] INFO Only one plan
+2017-03-09 10:13:44,734 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:13:44,735 sd_resource.py[line:82] INFO Only one plan
+2017-03-09 10:14:09,231 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:14:09,232 sd_resource.py[line:97] INFO Show all plans if have, maybe waste long time
+2017-03-09 10:14:46,986 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:14:46,987 sd_resource.py[line:82] INFO Only one plan
+2017-03-09 10:15:05,236 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 10:15:05,237 sd_resource.py[line:97] INFO Show all plans if have, maybe waste long time
+2017-03-09 14:39:58,270 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 14:39:58,270 sd_resource.py[line:97] INFO Show all plans if have, maybe waste long time
+2017-03-09 15:04:42,826 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 15:04:42,827 sd_resource.py[line:97] INFO Show all plans if have, maybe waste long time
+2017-03-09 15:08:10,959 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 15:08:10,960 sd_resource.py[line:82] INFO Only one plan
+2017-03-09 15:08:26,202 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 15:08:26,202 sd_resource.py[line:97] INFO Show all plans if have, maybe waste long time
+2017-03-09 15:09:05,228 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 15:09:05,228 sd_resource.py[line:97] INFO Show all plans if have, maybe waste long time
+2017-03-09 15:09:19,112 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 15:09:19,113 sd_resource.py[line:82] INFO Only one plan
+2017-03-09 15:09:29,505 sd_resource.py[line:148] INFO Parameters received done!, start computing
+2017-03-09 15:09:29,506 sd_resource.py[line:97] INFO Show all plans if have, maybe waste long time
+2017-03-16 09:38:39,123 sd_resource.py[line:143] INFO Parameters received done!, start computing
+2017-03-16 09:38:39,132 sd_resource.py[line:77] INFO Only one plan
+2017-03-16 09:49:04,463 sd_resource.py[line:143] INFO Parameters received done!, start computing
+2017-03-16 09:49:25,409 sd_resource.py[line:144] INFO Parameters received done!, start computing
+2017-03-16 09:49:25,421 sd_resource.py[line:78] INFO Only one plan
+2017-03-16 09:49:50,931 sd_resource.py[line:144] INFO Parameters received done!, start computing
+2017-03-16 09:49:50,933 sd_resource.py[line:78] INFO Only one plan
+2017-03-16 09:53:22,451 sd_resource.py[line:146] INFO Parameters received done!, start computing
+2017-03-16 09:53:22,452 sd_resource.py[line:80] INFO Only one plan
