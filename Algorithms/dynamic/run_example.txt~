@@ -8,7 +8,11 @@ python sd_knapsack.py -f multiple_knapsack -c 800 -w "[20,15,40,60,30]" -v "[40,
 unlimited
 python sd_knapsack.py -f multiple_knapsack -c 10 -w "[3,2,5]" -v "[60,40,60]" -s 2
 
+
+M = float("inf")
 0-1 knapsack:
+python sd_knapsack.py -f knapsack -c 16 -w "[3,4,5,6,7,7]" -v "[6,7,8,9,10,10]" -s 2
+
 python sd_knapsack.py -f multiple_knapsack -c 800 -w "[20,15,40,60,30]" -v "[40,25,60,70,50]" -m "[10,10,10,10,10]" -s 2
 
 python sd_knapsack.py -f multiple_knapsack -c 800 -w "[20,15,40,60,30]" -v "[40,25,60,70,50]" -m "[10,10,10,10,10]" -s 1
@@ -27,7 +31,6 @@ product:
 单位产品存储成本:f
 最大存储量:s
 固定生产成本:t
-
 期初存储量:o
 
 python sd_product.py -d "[2,3,4,2]" -p "[6,4,5,4]" -c [1,1,1,1] -f[0.5,0.5,0.5,0.5] -s[3,3,3,3] -t [3,3,3,3] -o 0

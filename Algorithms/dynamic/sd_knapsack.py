@@ -71,10 +71,15 @@ def multiple_knapsack(c,w,v,amount,s):
     n = len(w)  
     amounts = []
     for i in xrange(0,n):
-        if amount[i]:
+        if amount[i] == 0:
+            amounts.append(0)
+        elif amount[i]=="M":
+            amounts.append(c/w[i])
+        elif amount[i]:
             amounts.append(min(amount[i],c/w[i]))
         else:
-            amounts.append(c/w[i])
+          print("amounts have none value")
+          knapsack_logger.info("Error, amounts have none value")
 
 
     res=[[0 for j in range(c+1)] for i in range(n+1)]
@@ -232,7 +237,7 @@ if __name__ == "__main__":
 
     if f == knapsack:m = [0]*len(w)
     elif options.amount:m = eval(options.amount)
-    else: m = [0]*len(w)
+    else: m = ["M"]*len(w)
 
     s = options.scheme
 

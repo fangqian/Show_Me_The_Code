@@ -56,3 +56,8 @@
 2017-03-09 15:36:34,610 sd_knapsack.py[line:243] INFO Parameters received done!, start computing
 2017-03-09 15:36:34,612 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
 2017-03-09 15:36:34,613 sd_knapsack.py[line:177] INFO Show all plans if have, maybe waste long time
+2017-03-22 10:10:40,116 sd_knapsack.py[line:247] INFO Parameters received done!, start computing
+2017-03-22 10:12:40,529 sd_knapsack.py[line:247] INFO Parameters received done!, start computing
+2017-03-22 10:12:40,581 sd_knapsack.py[line:159] INFO Only one plan
+2017-03-22 10:13:23,618 sd_knapsack.py[line:247] INFO Parameters received done!, start computing
+2017-03-22 10:13:23,663 sd_knapsack.py[line:159] INFO Only one plan

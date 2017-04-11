@@ -1,3 +1,41 @@
 2017-03-15 16:02:37,406 sd_product.py[line:145] INFO Parameters received done!, start computing
 2017-03-15 16:02:37,406 sd_product.py[line:78] INFO Saving data
 2017-03-15 16:02:37,408 sd_product.py[line:84] INFO Done!
+2017-03-22 14:13:49,795 sd_product.py[line:145] INFO Parameters received done!, start computing
+2017-03-22 14:19:23,795 sd_product.py[line:147] INFO Parameters received done!, start computing
+2017-03-22 14:21:08,763 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-22 14:28:57,318 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-22 14:29:31,426 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:45:19,274 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:45:19,279 sd_product.py[line:81] INFO Saving data
+2017-03-24 10:45:19,343 sd_product.py[line:87] INFO Done!
+2017-03-24 10:47:11,074 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:48:55,195 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:48:55,195 sd_product.py[line:81] INFO Saving data
+2017-03-24 10:48:55,197 sd_product.py[line:87] INFO Done!
+2017-03-24 10:49:37,531 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:50:05,032 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:50:23,387 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:50:23,387 sd_product.py[line:81] INFO Saving data
+2017-03-24 10:50:23,389 sd_product.py[line:87] INFO Done!
+2017-03-24 10:51:37,819 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:52:34,202 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:54:15,162 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:54:15,162 sd_product.py[line:81] INFO Saving data
+2017-03-24 10:54:15,164 sd_product.py[line:87] INFO Done!
+2017-03-24 10:54:47,185 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:55:11,617 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:55:11,617 sd_product.py[line:81] INFO Saving data
+2017-03-24 10:55:11,619 sd_product.py[line:87] INFO Done!
+2017-03-24 10:55:31,247 sd_product.py[line:148] INFO Parameters received done!, start computing
+2017-03-24 10:56:30,270 sd_product.py[line:149] INFO Parameters received done!, start computing
+2017-03-24 10:57:05,254 sd_product.py[line:150] INFO Parameters received done!, start computing
+2017-03-24 11:05:22,664 sd_product.py[line:157] INFO Parameters received done!, start computing
+2017-03-24 11:05:22,664 sd_product.py[line:86] INFO Saving data
+2017-03-24 11:05:22,667 sd_product.py[line:92] INFO Done!
+2017-03-24 11:05:39,441 sd_product.py[line:157] INFO Parameters received done!, start computing
+2017-03-24 11:05:39,441 sd_product.py[line:94] INFO No solution
+2017-03-24 11:11:21,658 sd_product.py[line:157] INFO Parameters received done!, start computing
+2017-03-24 11:11:21,658 sd_product.py[line:94] INFO No solution
+2017-03-24 11:11:43,089 sd_product.py[line:154] INFO Parameters received done!, start computing
+2017-03-24 11:11:43,090 sd_product.py[line:91] INFO No solution

@@ -48,17 +48,22 @@ def sd_product(d, p, product_fee, s, max_s, pro_fee, init, result_name):
                     w = (j + k - d[i]) * s[i]
                 else:
                     w = pro_fee[i] + k * product_fee[i] + (j + k - d[i]) * s[i]
-                if f[i][j] > f[i+1][j + k - d[i]] + w:
+
+                if j + k - d[i] < len(f[i+1]) and f[i][j] > f[i+1][j + k - d[i]] + w:
                     f[i][j] = f[i+1][j + k - d[i]] + w
                     m[i][j] = k
-
+                else:continue
     max_value = f[0][init]
     products = []
     end_storage = []
     storage_fee = []
     product_cost = []
     total_fee = []
+    status = 1
     for i in range(n):
+        if init < 0:
+            status = 0
+            break
     	products.append(m[i][init])
     	init = m[i][init]+init-d[i]
         end_storage.append(init)
@@ -74,7 +79,7 @@ def sd_product(d, p, product_fee, s, max_s, pro_fee, init, result_name):
     dicts = {"期末存储量":end_storage, "最优生产量":products, "生产费用":product_cost, 
              "存储费用":storage_fee, "单个生产时期总费用":total_fee}
 
-    if result_name:
+    if result_name and status!=0:
         product_logger.info("Saving data")
         with open(result_name,"w") as f:
             f.write(str(max_value)+'\n')
@@ -82,6 +87,10 @@ def sd_product(d, p, product_fee, s, max_s, pro_fee, init, result_name):
         results = pd.DataFrame(dicts,columns=columns)
         results.to_csv(result_name,index = False, mode = "a", header=False, sep="\t")
         product_logger.info("Done!")
+    else:
+        product_logger.info("No solution")
+        with open(result_name,"w") as f:
+            f.write("No solution")
 
     return(dicts)
 
